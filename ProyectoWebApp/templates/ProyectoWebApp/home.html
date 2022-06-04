@@ -1,0 +1,47 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+   <!-- Heading -->
+   <section class="page-section clearfix">
+    <div class="container">
+      <div class="intro" >
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'ProyectoWebApp/img/fondo.jpg' %}" alt="">
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded" >
+          <h2 class="section-heading mb-4" >
+            <span class="section-heading-upper">Ciberseguridad</span>
+            <span class="section-heading-lower">El mejor aliado para tu empresa</span>
+          </h2>
+          <p class="mb-3">Contacta con nosotros si quieres que tu PYME esté más protegida de los ciberdelincuentes.
+          </p>
+         
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+    <!-- Message -->
+    <section class="page-section cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-upper">Profesional</span>
+                <span class="section-heading-lower">Garantizado</span>
+              </h2>
+              <p class="mb-0">Contamos con el asesoramiento de profesores de universidad, tanto del área de Ingeniería Informática como de ADE. Le daremos las recomendaciones de seguridad que su PYME se merece.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+
+

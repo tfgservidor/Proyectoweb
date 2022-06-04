@@ -1,0 +1,87 @@
+{% extends "ProyectoWebApp/base.html" %} {% load embed_video_tags %}
+
+{% load static %}
+
+{% block content %}
+
+{% if post %}
+<style>
+    #cb_span{color:white;}
+</style>
+<form action="/recomendations/" method="POST"> {% csrf_token %}
+    {% for c in cat %}
+    <table class="table table-striped table-dark">
+        <tr>
+            <th colspan="2">{{c.nombre}}</th>
+        </tr>
+    
+        
+        {%for p in princ %}
+            {% if p.categ.nombre == c.nombre %}
+            
+            <tr>
+                <td><div class="custom-control custom-checkbox" style="margin-left: 25px;">
+                    <input type="checkbox"  class="custom-control-input" id="{{p.nombre}}" name="{{p.nombre}}">
+                    <label class="custom-control-label" for="{{p.nombre}}">{{p.nombre}}</label>
+                </div>
+                </td>
+                
+            </tr>
+        
+            {% endif %}
+        {% endfor %}
+    </table>
+    {% endfor %}
+    
+    <!--
+    <input type="checkbox" name="app"><span id="cb_span">Applicación móvil</span><br>
+    <input type="checkbox" name="webapp"><span id="cb_span">Aplicación Web</span><br>
+    <input type="checkbox" name="ordenador"><span id="cb_span">Ordenadores</span><br>
+    <input type="checkbox" name="usuario"><span id="cb_span">Usuarios</span><br>
+    <input type="checkbox" id="servidor" onclick="myFunction()"><span id="cb_span">Servidores</span><br>
+    <input type="checkbox" id="propio" style="display:block"><span id="cb_span">Propios</span><br>
+    <div><p> </p></div>
+    <input type="submit" value="Enviar">
+    -->
+    <button type="submit" class="btn btn-success">Enviar</button>
+   </form>
+{% endif %}
+
+
+<div><p> </p></div>
+{% for c in cats %}
+<table class="table table-striped table-dark">
+    <tr>
+		<th colspan="2">Recomendaciones de {{c.categ.nombre}}</th>
+	</tr>
+    {% for r in res %}
+    
+        
+        {% if r.princ == c %}
+        
+        <tr>
+            <td style="width: 250px">{{r.princ}}</td>
+            <td>
+                <p>{{r}}</p>
+                <p>{% video r.video 'tiny' %}</p> 
+            </td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+{% endfor %}
+
+{% if res %}
+<form action="/recomendations/" method="POST"> {% csrf_token %}
+    <!--<input type="submit" style="width:70px; margin-left: 1px;" value=" Atrás ">-->
+    <button type="submit" class="btn btn-success">Atrás</button>
+
+</form>
+{% endif %}
+
+
+	
+
+
+
+{%endblock%}
